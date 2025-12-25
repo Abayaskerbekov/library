@@ -22,7 +22,7 @@ class Book(models.Model):
     title=models.CharField(max_length=200)
     description=models.TextField(null=True, blank=True)
     publish_year=models.PositiveIntegerField()
-    authors=models.ManyToManyField(Author, related_name='books')
+    authors=models.ManyToManyField(Author, related_name='Авторы')
 
     class Meta:
         verbose_name="Книга"
@@ -30,3 +30,19 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Feedback(models.Model):
+    full_name=models.CharField("ФИО", max_length=100)
+    feedback=models.CharField("Отзыв",max_length=200)
+    book=models.ManyToManyField(Book, related_name="Книга")
+
+    class Meta:
+        verbose_name="Отзыв"
+        verbose_name_plural="Отзыв"
+
+    def __str__(self):
+        return self.full_name
+
+
+

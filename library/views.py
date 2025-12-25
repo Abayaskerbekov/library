@@ -15,3 +15,9 @@ class BookView(generics.ListAPIView):
     serializer_class=BookSerializer
 
 
+class Feedback(generics.ListAPIView):
+    queryset=Feedback.objects.all()
+    serializer_class=FeedbackSerializer
+
+
+
